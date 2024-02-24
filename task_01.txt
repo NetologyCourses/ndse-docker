@@ -1,0 +1,91 @@
+╭─verda@verda-laptop ~/Netology/Diplomes/static-diplomes  ‹master› 
+╰─➤  docker image pull busybox
+Using default tag: latest
+latest: Pulling from library/busybox
+9ad63333ebc9: Pull complete 
+Digest: sha256:6d9ac9237a84afe1516540f40a0fafdc86859b2141954b4d643af7066d598b74
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker run --name pinger -d -i -t busybox ping -c 7 netology.ru                                                                                                                                                             125 
+6b504aefbe4c7d41ee336e5827fddf442ed4008c661c77387081d79926a19a48
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                          PORTS     NAMES
+6b504aefbe4c   busybox   "ping -c 7 netology.…"   About a minute ago   Exited (0) About a minute ago             pinger
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker logs -t pinger
+2024-02-24T13:32:09.195378344Z PING netology.ru (188.114.98.224): 56 data bytes
+2024-02-24T13:32:09.198110659Z 64 bytes from 188.114.98.224: seq=0 ttl=56 time=2.767 ms
+2024-02-24T13:32:10.216134059Z 64 bytes from 188.114.98.224: seq=1 ttl=56 time=20.233 ms
+2024-02-24T13:32:11.216086082Z 64 bytes from 188.114.98.224: seq=2 ttl=56 time=19.839 ms
+2024-02-24T13:32:12.202176090Z 64 bytes from 188.114.98.224: seq=3 ttl=56 time=5.739 ms
+2024-02-24T13:32:13.216118517Z 64 bytes from 188.114.98.224: seq=4 ttl=56 time=19.330 ms
+2024-02-24T13:32:14.219237993Z 64 bytes from 188.114.98.224: seq=5 ttl=56 time=21.847 ms
+2024-02-24T13:32:15.218242142Z 64 bytes from 188.114.98.224: seq=6 ttl=56 time=20.686 ms
+2024-02-24T13:32:15.218298058Z 
+2024-02-24T13:32:15.218308858Z --- netology.ru ping statistics ---
+2024-02-24T13:32:15.218317765Z 7 packets transmitted, 7 packets received, 0% packet loss
+2024-02-24T13:32:15.218326351Z round-trip min/avg/max = 2.767/15.777/21.847 ms
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker stop pinger
+pinger
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+6b504aefbe4c   busybox   "ping -c 7 netology.…"   3 minutes ago   Exited (0) 3 minutes ago             pinger
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker logs -t pinger
+2024-02-24T13:32:09.195378344Z PING netology.ru (188.114.98.224): 56 data bytes
+2024-02-24T13:32:09.198110659Z 64 bytes from 188.114.98.224: seq=0 ttl=56 time=2.767 ms
+2024-02-24T13:32:10.216134059Z 64 bytes from 188.114.98.224: seq=1 ttl=56 time=20.233 ms
+2024-02-24T13:32:11.216086082Z 64 bytes from 188.114.98.224: seq=2 ttl=56 time=19.839 ms
+2024-02-24T13:32:12.202176090Z 64 bytes from 188.114.98.224: seq=3 ttl=56 time=5.739 ms
+2024-02-24T13:32:13.216118517Z 64 bytes from 188.114.98.224: seq=4 ttl=56 time=19.330 ms
+2024-02-24T13:32:14.219237993Z 64 bytes from 188.114.98.224: seq=5 ttl=56 time=21.847 ms
+2024-02-24T13:32:15.218242142Z 64 bytes from 188.114.98.224: seq=6 ttl=56 time=20.686 ms
+2024-02-24T13:32:15.218298058Z 
+2024-02-24T13:32:15.218308858Z --- netology.ru ping statistics ---
+2024-02-24T13:32:15.218317765Z 7 packets transmitted, 7 packets received, 0% packet loss
+2024-02-24T13:32:15.218326351Z round-trip min/avg/max = 2.767/15.777/21.847 ms
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+Команда ping запускалась 2 раза, общее количество запросов - 14
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker stop pinger
+pinger
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker rm pinger
+pinger
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
+
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤  docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:6d9ac9237a84afe1516540f40a0fafdc86859b2141954b4d643af7066d598b74
+Deleted: sha256:3f57d9401f8d42f986df300f0c69192fc41da28ccc8d797829467780db3dd741
+Deleted: sha256:2e112031b4b923a873c8b3d685d48037e4d5ccd967b658743d93a6e56c3064b9
+╭─verda@verda-laptop ~/Studio/Netology
+╰─➤
